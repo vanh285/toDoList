@@ -85,13 +85,7 @@ function App() {
       const isChecked = false;
       setCheckboxes([...checkboxes, { isChecked, id }]);
       setTasks([...tasks, { values, id }]);
-      localStorage.setItem(
-        'tasks',
-        JSON.stringify([
-          ...tasks,
-          { values, id: new Date().getTime().toString() },
-        ])
-      );
+      localStorage.setItem('tasks', JSON.stringify([...tasks, { values, id }]));
       localStorage.setItem(
         'checkboxes',
         JSON.stringify([...checkboxes, { isChecked, id }])
@@ -142,6 +136,7 @@ function App() {
         removeItem(checkboxes[i].id);
       }
     }
+    refreshPage();
   };
   return (
     <>
